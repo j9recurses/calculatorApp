@@ -1,0 +1,13 @@
+*~
+*.swp
+angular.js.tmproj
+/node_modules/
+/public/lib/
+/vendor/
+/node_modules/
+npm-debug.log
+/tmp/
+notes.txt
+.bundle
+
+

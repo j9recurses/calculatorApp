@@ -1,1 +1,3 @@
-# calculatorApp
+# Angular js CalculatorApp
+
+
