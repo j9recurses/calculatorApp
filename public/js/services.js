@@ -36,6 +36,7 @@ angular.module('calculatorApp').factory('CalculatorFactory', function(){
             after =   after +b ;
             return parseFloat(before + "." + after);
         };
+
        var digitBase10 = function(a, b){
           return a * 10 + b;
         };

@@ -1,6 +1,6 @@
 // Set up main routes in app and inject 3rd party libs/dependencies
 
-angular.module('calculatorApp', [ 'ngRoute', 'ui.bootstrap',  'ngSanitize'])
+angular.module('calculatorApp', [ 'ngRoute', 'ui.bootstrap',  'ngSanitize', 'ngResource'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
