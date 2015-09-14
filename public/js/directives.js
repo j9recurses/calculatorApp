@@ -1,9 +1,14 @@
 //use a directive to capture the key input
 angular.module('calculatorApp').directive('keyTrap', function(){
  return function( scope, elem ) {
-    elem.bind('keydown', function( event ) {
-      scope.$broadcast('keydown', { code: event.keyCode } );
+    //bind keydown events to a given elem
+    elem.bind('keypress', function( event ) {
+      scope.$broadcast('keypress', { code: event.keyCode } );
     });
+    // //bind keypressed events for a given elm (need this for operators)
+    //  elem.bind('keydown', function( event ) {
+    //   scope.$broadcast('keydown', { code: event.keyCode } );
+    // });
   };
 });
 

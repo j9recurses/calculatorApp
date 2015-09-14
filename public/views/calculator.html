@@ -22,6 +22,7 @@
           {{ key.label }}
         </div>
 
+
         <!-- % -->
         <div class="col-xs-1 digit" ng-click="transformNum(key.operation)" ng-repeat="key in numTransforms| slice: 0:1">
           {{key.label}}
@@ -75,13 +76,13 @@
           ng-click="digitClicked(key.value)">
           {{ key.label }}
         </div>
-        <div class="col-xs-1 digit" ng-click="decimalClicked(key.operation)" ng-repeat="key in numTransforms| slice: 2:3">
+        <div class="col-xs-1 digit" ng-click="decimalClicked()"">
           <!-- . -->
-          {{ key.label }}
+          {{ dot }}
         </div>
         <div class="col-xs-1 operator roundbottomRight" ng-click="doTheMath()">
           <!-- = -->
-          {{ equals.label }}
+          {{ eq }}
         </div>
       </div>
     </div>

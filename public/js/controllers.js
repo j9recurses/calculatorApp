@@ -1,5 +1,5 @@
 angular.module('calculatorApp')
-    .controller('calculatorController', ['$scope', '$rootScope', '$timeout', 'CalculatorFactory', function($scope, $rootScope, $timeout, CalculatorFactory) {
+    .controller('calculatorController', ['$scope', 'CalculatorMathFactory', 'CalculatorSetupFactory', function($scope, CalculatorMathFactory, CalculatorSetupFactory) {
 
         //result val is constantly updated with operations and digit input;
         //is bound to the view and its value appears in the main calculator screen
@@ -18,72 +18,35 @@ angular.module('calculatorApp')
         //used to determine if a user entered a decimal number
         //that has more than one decimal places
         $scope.decimalClickDouble = false;
-        $scope.ac = {
-            label: "AC",
-            value: true
-        }
 
-        $scope.digits = [{
-            label: "1",
-            value: 1
-        }, {
-            label: "2",
-            value: 2
-        }, {
-            label: "3",
-            value: 3
-        }, {
-            label: "4",
-            value: 4
-        }, {
-            label: "5",
-            value: 5
-        }, {
-            label: "6",
-            value: 6
-        }, {
-            label: "7",
-            value: 7
-        }, {
-            label: "8",
-            value: 8
-        }, {
-            label: "9",
-            value: 9
-        }, {
-            label: "0",
-            value: 0
-        }];
+        //make the keyboard keys
+        $scope.kbKeys = CalculatorSetupFactory.KbKpDigitKeys(48, 58, $scope.digitClicked);
+        //make the keypad keys
+        $scope.kpKeys = CalculatorSetupFactory.KbKpDigitKeys(96, 106, $scope.digitClicked);
+
+        $scope.ac = CalculatorSetupFactory.ac();
+
+        //setup the digits
+        $scope.digits = CalculatorSetupFactory.digits();
+        //for(var i in $scope.digits){console.log($scope.digits[i]);}
 
         //get the calc operator functions from the calculator factory service
-        $scope.operators = [{
-            label: "÷",
-            operation: CalculatorFactory.divide
-        }, {
-            label: "x",
-            operation: CalculatorFactory.multiply
-        }, {
-            label: "+",
-            operation: CalculatorFactory.add
-        }, {
-            label: "-",
-            operation: CalculatorFactory.subtract
-        }];
+        $scope.operators = CalculatorSetupFactory.operatorContainer (
+                                            ["÷", "x", "+", "-"],
+                                            [CalculatorMathFactory.divide,
+                                            CalculatorMathFactory.multiply,
+                                            CalculatorMathFactory.add,
+                                             CalculatorMathFactory.subtract]
+          );
 
-        //get the digit transform functions from the calculator factory service
 
-        $scope.equals = {
-            label: "="
-        };
-        $scope.numTransforms = [{
-            label: "%",
-            operation: CalculatorFactory.percentage
-        }, {
-            label: "+/-",
-            operation: CalculatorFactory.posNeg
-        }, {
-            label: "."
-        }];
+        //setup t the digit transform functions %, +/-, . from the calculator factory service
+         $scope.numTransforms = CalculatorSetupFactory.operatorContainer( ["%", "+/-"], [CalculatorMathFactory.percentage, CalculatorMathFactory.posNeg ])
+
+         console.log($scope.numTransforms);
+         //dot and equal symbols for the view
+         $scope.dot = ".";
+         $scope.eq = "="
 
         //function to reset the screen and calculator
         $scope.clearAll = function(digit) {
@@ -112,15 +75,14 @@ angular.module('calculatorApp')
             //been inputed and decimal button click event
             else if ($scope.decimalClick) {
                 if ($scope.decimalClickDouble) {
-
                     //after 1 decimal place dit has been entered
                     //need to divide the result by base
                     //10 every time a decimal digit is entered
                     //($scope.entered2 / 10) + digit;
-                    $scope.result = CalculatorFactory.digitNPlusOneDecimal($scope.entered2, digit)
+                    $scope.result = CalculatorMathFactory.digitNPlusOneDecimal($scope.entered2, digit)
                 } else {
                     $scope.decimalClickDouble = true;
-                    $scope.result = CalculatorFactory.digitfirstDecimal($scope.entered2, digit)
+                    $scope.result = CalculatorMathFactory.digitfirstDecimal($scope.entered2, digit)
                         //$scope.entered2 + (digit/10);
                 }
             } else {
@@ -132,7 +94,7 @@ angular.module('calculatorApp')
                 //and then adding the second digit entered.
                 //also need to save digit of the second item entered for
                 //the math operation fxn
-                $scope.result = CalculatorFactory.digitBase10($scope.result, digit);
+                $scope.result = CalculatorMathFactory.digitBase10($scope.result, digit);
 
             }
             //store the val of the number entered;
@@ -196,17 +158,16 @@ angular.module('calculatorApp')
             $scope.entered2 = $scope.result;
         };
 
-        $scope.decimalClicked = function(operator) {
-            $scope.decimaloperator = operator;
+        //function called when decimal button is clicked
+        $scope.decimalClicked = function() {
+            // $scope.decimaloperator = operator;
             $scope.decimalClick = true;
             $scope.result = $scope.result + ".";
-            console.log("console");
         };
 
         $scope.keycode = "in here"
-        $scope.$on('keydown', function(msg, obj) {
+        $scope.$on('keypress', function(msg, obj) {
             $scope.code = obj.code;
-            $scope.keyLog.push(obj.code);
             $scope.keycode = obj.code;
             $scope.$apply();
             console.log($scope.code);
@@ -222,32 +183,7 @@ angular.module('calculatorApp')
             }
         });
 
-        $scope.keyLog = [];
-        //make keys 1-9
 
-        var createKbKeys = function() {
-          var kbKeys = [];
-          var val = 0;
-          for (var kc = 48; kc < 58; kc++) {
-              kbKeys.push({
-                  code: kc,
-                  val: val,
-                  optfxn: $scope.digitClicked
-              });
-              val++;
-          }
-          return kbKeys;
-        };
-        $scope.kbKeys = createKbKeys();
-
-        var makeTransformKeys = function(kbKeys) {
-            var transform = [
-                { code: 67, optfxn: $scope.clearAll},
-                { code: 190,optfxn: $scope.decimalClicked}
-            ]
-            return kbKeys.concat(transform);
-        };
-        $scope.kbKeys = makeTransformKeys($scope.kbKeys);
 
 
 
