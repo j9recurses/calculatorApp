@@ -2,13 +2,9 @@
 angular.module('calculatorApp').directive('keyTrap', function(){
  return function( scope, elem ) {
     //bind keydown events to a given elem
-    elem.bind('keypress', function( event ) {
-      scope.$broadcast('keypress', { code: event.keyCode } );
+    elem.bind('keydown', function( event ) {
+      scope.$broadcast('keydown', { code: event.keyCode } );
     });
-    // //bind keypressed events for a given elm (need this for operators)
-    //  elem.bind('keydown', function( event ) {
-    //   scope.$broadcast('keydown', { code: event.keyCode } );
-    // });
   };
 });
 

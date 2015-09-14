@@ -19,11 +19,7 @@ angular.module('calculatorApp')
         //that has more than one decimal places
         $scope.decimalClickDouble = false;
 
-        //make the keyboard keys
-        $scope.kbKeys = CalculatorSetupFactory.KbKpDigitKeys(48, 58, $scope.digitClicked);
-        //make the keypad keys
-        $scope.kpKeys = CalculatorSetupFactory.KbKpDigitKeys(96, 106, $scope.digitClicked);
-
+        //ac/clear button that clears screen on click
         $scope.ac = CalculatorSetupFactory.ac();
 
         //setup the digits
@@ -165,16 +161,18 @@ angular.module('calculatorApp')
             $scope.result = $scope.result + ".";
         };
 
+
+       //create a on listener thats listening for
+       //key press events. When it hears
+       //a key press look up the valuse of the keys
+       //in a dictionary, and then run the appropriate
+       //function based on the key pressed.
         $scope.keycode = "in here"
-        $scope.$on('keypress', function(msg, obj) {
-            $scope.code = obj.code;
+        $scope.$on('keydown', function(msg, obj) {
+            // $scope.code = obj.code;
             $scope.keycode = obj.code;
-            $scope.$apply();
-            console.log($scope.code);
-            console.log($scope.kbKeys);
             for (i = 0; i < $scope.kbKeys.length; i++) {
-                console.log($scope.kbKeys[i].code);
-                if ($scope.kbKeys[i].code == obj.code) {
+                if ($scope.kbKeys[i].code ==  $scope.keycode) {
                     console.log("in here");
                     console.log($scope.kbKeys[i].val);
                     $scope.kbKeys[i].optfxn($scope.kbKeys[i].val);
@@ -183,6 +181,10 @@ angular.module('calculatorApp')
             }
         });
 
+      //make the keyboard keys
+        $scope.kbKeys = CalculatorSetupFactory.KbKpDigitKeys(48, 58, $scope.digitClicked);
+        //make the keypad keys
+        //$scope.kpKeys = CalculatorSetupFactory.KbKpDigitKeys(96, 106, $scope.digitClicked);
 
 
 
