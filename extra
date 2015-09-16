@@ -1,0 +1,19 @@
+function buildViewsAndDataForViews() {
+            //ac/clear button that clears screen on click
+            $scope.ac = mathStuff.ac;
+
+            //setup the digits hash, with the digit clicked function
+            $scope.digits = mathStuff.digits;
+
+
+            //get the calc operator functions from the calculator factory service
+            $scope.operators = mathStuff.operators;
+
+            $scope.digitKeyBoardKeys = mathStuff.digitKeyBoardKeys;
+            console.log( $scope.digitKeyBoardKeys)
+
+        };
+        buildViewsAndDataForViews();
+ calc = CalculatorDuties.intializeCalc(); //intializes a calc obj
+
+        var mathStuff = CalculatorSetup.mathStuff();
