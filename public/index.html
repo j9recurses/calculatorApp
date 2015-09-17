@@ -9,35 +9,34 @@
     <title>j9's Calculator app</title>
     <link href="lib/bootstrap-css/css/bootstrap.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
-    </head>
+  </head>
   <body key-trap>
-
     <div class="container" ng-view>
-
     </div>
-
     <!-- vendor -->
     <script type="text/javascript" src="lib/angular/angular.js"></script>
-    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="lib/angular-hotkeys/build/hotkeys.js"</script>
-    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
-
-    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
-
+    <script type="text/javascript" src="/lib/angular-touch/angular-touch.js"></script>
+    <script type="text/javascript" src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
-      <script type="text/javascript" src="lib/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="lib/angular-resource/angular-resource.js"></script>
     <!-- app -->
     <script type="text/javascript" src="js/calculatorApp.js"></script>
     <!-- controllers -->
-    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/controllers/calculatorController.js"></script>
     <!-- filters -->
-    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/filters/calculatorPadFilter.js"></script>
     <!--services-->
-     <script type="text/javascript" src="js/services.js"></script>
-     <!--directives-->
-     <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/services/calculatorMath.js"></script>
+    <script type="text/javascript" src="js/services/calculatorDuties.js"></script>
+    <script type="text/javascript" src="js/services/calculatorSetup.js"></script>
+     <script type="text/javascript" src="js/services/calculatorClicks.js"></script>
 
 
 
+    <!--directives-->
+    <script type="text/javascript" src="js/directives/results.js"></script>
+    <script type="text/javascript" src="js/directives/keyTrap.js"></script>
   </body>
 </html>

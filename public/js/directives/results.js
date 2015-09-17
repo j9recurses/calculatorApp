@@ -1,23 +1,3 @@
-// This directive binds keydown events to elements;
-// when it hears a keydown event, it broadcasts the key code of the
-// key that pressed down on.
-
-//use a directive to capture the key input
-angular.module('calculatorApp').directive('keyTrap', function() {
-    return function(scope, elem) {
-        //bind keydown events to a given elem
-        elem.bind('keydown keypress', function(event) {
-            scope.$broadcast('keydown keypress', {
-                kevent: event,
-                code: event.keyCode,
-                key: String.fromCharCode(event.which)
-            });
-            event.preventDefault();
-        });
-    };
-});
-
-
 ///directive to handle the resizing of numbers
 ///as user enters digits the amt of numbers in the
 ///view increases so we want to resize the result in the view.
@@ -37,18 +17,19 @@ angular.module('calculatorApp').directive('results', function() {
             scope.$watch(
                 // This function returns the value being watched. It is called for each turn of the $digest loop
                 function() {
-                    return scope.result;
+                    return  scope.result;
                 },
                 // This is the change listener, called when the value returned from the above function changes
                 function(newValue, oldValue) {
                     if (newValue !== oldValue) {
                         var resultlen = scope.result.toString().length;
-                        if (resultlen == 1 && calc.ac) {
+                        console.log(resultlen);
+                        if (resultlen < 10) {
                             newsize = 50;
                             newpaddingbottom = 5;
                             paddingtop = 0;
                         } else {
-                            newsize = fontsize * .98;
+                            newsize = fontsize -1;
                             if (newsize < 3) {
                                 newsize = 5;
                             }

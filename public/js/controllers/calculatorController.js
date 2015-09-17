@@ -1,5 +1,5 @@
 angular.module('calculatorApp')
-    .controller('calculatorController', ['$scope', 'CalculatorMath', 'CalculatorSetup', 'CalculatorDuties', 'CalcClicks',  'hotkeys', function($scope, CalculatorMath, CalculatorSetup, CalculatorDuties, CalcClicks, hotkeys) {
+    .controller('calculatorController', ['$scope', 'CalculatorMath', 'CalculatorSetup', 'CalculatorDuties', 'CalculatorClicks',  'hotkeys', function($scope, CalculatorMath, CalculatorSetup, CalculatorDuties, CalculatorClicks, hotkeys) {
 
 
         $scope.result = 0; //stores the result and displays result to user in the view
@@ -15,34 +15,39 @@ angular.module('calculatorApp')
         //input is the digit that user clicked on
         //updates the result on screen
         $scope.digitClicked = function(digit) {
-            calc = CalcClicks.digitWasClicked(calc, digit);
+            calc = CalculatorClicks.digitWasClicked(calc, digit);
             $scope.result = calc.result;
         };
 
-        //called when a user clicks +,-, x, / buttons
+
+          //called when a user clicks +,-, x, / buttons
         //Runs the math function and updates the result on screen
         $scope.operatorClicked = function(operator) {
-            calc = CalcClicks.operatorWasClicked(calc, operator);
+            calc = CalculatorClicks.operatorWasClicked(calc, operator);
             $scope.result = calc.result;
+
         };
 
         //the user clicks on equals
         $scope.doTheMath = function() {
-            calc = CalcClicks.doingTheMath(calc);
+            calc = CalculatorClicks.doingTheMath(calc);
             $scope.result = calc.result;
+
         };
 
         //called when the user clicks on the +/-, . or % buttons;
         //transforms the current result into pos/neg, decimal, or percentage
         $scope.transformDigitClick = function(operator) {
-            calc = CalcClicks.transformDigitWasClick(calc, operator)
+            calc = CalculatorClicks.transformDigitWasClick(calc, operator)
             $scope.result = calc.result;
+
         };
 
         //function called when decimal button is clicked
         $scope.decimalClicked = function() {
-            calc = CalcClicks.decimalWasClicked(calc);
+            calc = CalculatorClicks.decimalWasClicked(calc);
             $scope.result = calc.result;
+
         };
 
         //pass the button functions to the setup functions
@@ -56,7 +61,11 @@ angular.module('calculatorApp')
             equalsclx: $scope.doTheMath
         });
 
-        var calc = CalculatorDuties.intializeCalc(); //intializes a calc obj
+        calc = CalculatorDuties.intializeCalc(); //intializes a calc obj
+
+         //for coordinating fontsize in view
+        $scope.displaySize = {reset:calc.screenReset,result:$scope.result};
+
         ///generates the data and logical structure
         /// to build out the calculator views
         function buildViewsAndDataForViews(clxfxns) {

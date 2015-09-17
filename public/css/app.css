@@ -22,11 +22,13 @@ body {
 }
 .calcPad {
   padding-top: 5%;
+  padding-bottom:5%;
 }
+.title{ padding-top:3%;}
 .calcDisplay {
   background-color: #AAAAAA;
-  padding-top: 4.5%;
-  padding-bottom:10%;
+  padding-top: 6%;
+  padding-bottom:12%;
   box-shadow: 0px 0px 0px 0.5px #515151;
   color: white;
   -moz-border-radius: 5px 5px 0px 0px;
@@ -50,12 +52,15 @@ body {
       border-color: #515151;*/
   box-shadow: 0px 0px 0px 0.5px #515151; /*border-width: 0.5px;*/
   text-align: center;
-  padding: 2.25% 2.25% 1.5% 1.5%;
+  padding: 5%;
+}
+.digit:active{
+   background-color: #yellow;
 }
 .operator {
   background-color: #FA9A50;
   text-align: center;
-  padding: 2.25% 2.25% 1.5% 1.5%;
+  padding: 5%;
   box-shadow: 0px 0px 0px 0.5px #515151;
 }
 .roundbottomRight {

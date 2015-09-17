@@ -10,10 +10,10 @@ angular.module('calculatorApp', [ 'ngRoute', 'cfp.hotkeys', 'ngSanitize', 'ngRes
                 templateUrl: 'views/calculator.html',
                 controller: 'calculatorController'
             })
-             .when('/code_explained', {
-                templateUrl: 'views/approach.html',
-                controller: 'approachController'
-            })
+            //  .when('/code_explained', {
+            //     templateUrl: 'views/approach.html',
+            //     controller: 'approachController'
+            // })
         .otherwise({
             redirectTo: '/'
         });
