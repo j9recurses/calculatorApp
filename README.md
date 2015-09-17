@@ -66,7 +66,7 @@ I tried to follow these MVC architecture patterns
 when design and building this app:
 
 ```
-**Controllers:**
+*** Controllers: ***
 
 + Contain the logic required to initialize the scope
 
@@ -76,7 +76,8 @@ when design and building this app:
 
 + Controllers bring logic from the models and views together
 
-**Controllers shouldn't**
+*** Controllers shouldn't ***
+
 + Contain logic/fxns that manipulate DOM elements
 
 + Contain logic/fxns that manage persistence of data:
@@ -84,11 +85,13 @@ when design and building this app:
   data manipulation/business logic, generating, storing
   or significantly modifying app data, etc.
 
-**Models:**
+*** Models: ***
+
 + Contain the logic/fxns that generate, modify, destroy
   or store app data.
 
-**Views:**
+***Views:***
+
  + Manipulate DOM elements.
 
 The angular frame work isn't a traditional MVC (its richer/
@@ -135,24 +138,24 @@ Additionally, I tried to organize my services by concerns:
 for instance, in my app, I
 have the following factory services:
 
-```
-**CalculatorMath:**
+
+***CalculatorMath:***
 
 + handles all the math operation functions
                 ÷, x, +, -, %, etc
 
-**CalculatorSetup**
+***CalculatorSetup***
 
 + Generates all the data needed to initialize
                   the calculator app.
 
-** CalculatorDuties**
+***CalculatorDuties***
 
 + Creates and manages the app data
                   the calculator needs maintain
                   to maintain its state
 
-** CalculatorClicks: **
+***CalculatorClicks:***
 
 + handles persistence and management app
             of data after given user action is taken in
@@ -163,7 +166,7 @@ have the following factory services:
             the data persistence/transformation
             and then passes the resulting data back to
             to the controller.
-```
+
 
 ###Views/Directives
 This app doesn't have a ton of don manipulation, however,
@@ -224,7 +227,9 @@ This app uses a Sinatra backend as the server
 I could have used node, but I have a nginx server
 that is config'd for sintra so I just went with that.
 
+```
 assumes that you have ruby, npm and bower installed
+```
 
 to install dependencies:
 
