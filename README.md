@@ -228,12 +228,19 @@ assumes that you have ruby, npm and bower installed
 
 to install dependencies:
 
-```bundle install```
+```
+bundle install
+```
 
-```bower install```
+```
+bower install
+```
 
 to run the app in your web browser, cd into the root dir and run:
 
-```rackup```
+```
+rackup
+````
 
+####Want to know more?  This code is heavily commented so you could see my logic in making this app so check out!
 
