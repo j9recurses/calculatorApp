@@ -54,7 +54,7 @@ or operator. For click events, I used ng-click to fire
 off the corresponding function. For keyboard input,
 I created a directive that listened for key events.
 When a given key was pressed, the directive broadcast
-the event up to the controller function, and in my controller,
+the event down to the controller function, and in my controller,
 I had a '$scope.$on('keydown keypress',...' function
 that watched for keydown events and when certain
 keys where pressed, it applied the appropriate
