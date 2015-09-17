@@ -1,5 +1,7 @@
 # Angular js CalculatorApp
 
+### [Live demo of app]: (http://www.j9scalculator.tk/#/calculator)
+
 A calculator written in angular js.
 Has the same specs as the calculator in MacOsX/iphone.
 
@@ -244,4 +246,5 @@ rackup
 
 ####Want to know more?  This code is heavily commented to help you better understand my thoght process in making this app, so check it out!
 
+#### [http://www.j9scalculator.tk/#/calculator] (http://www.j9scalculator.tk/#/calculator)
 
