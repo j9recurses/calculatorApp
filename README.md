@@ -27,7 +27,7 @@ by base 10 to make room for the newest digit input.
 When a user enters an operator or transform function, the operation is applied
 to the numbers entered.
 
-To put in the simplest terms, the calculator must
+<span>To put in the simplest terms, the calculator must
 store the following 4 variables to maintain its state:
 
 result : i.e. the number to show the user
@@ -43,7 +43,7 @@ operation: stores the operation that user entered (ie, + -, /, * )
 
 there are a decimal click and a double decimal click flags
 that help the calculator deal with situations where
-has entered decimal input.
+has entered decimal input.</span>
 
 For UI input, the user can either click or type on a digit
 or operator. For click events, I used ng-click to fire
@@ -62,27 +62,32 @@ keys where pressed, it applied the appropriate
 I tried to follow these MVC architecture patterns
 when design and building this app:
 
-Controllers:
-•฀ Contain the logic required to initialize the scope
-•฀ Contain the logic/fxns used by the view to present data from the scope
-•฀ Contain the logic/fxns that are needed to update the scope based on user interaction
-• Controllers bring logic from the models and views together
+<span>Controllers:
++Contain the logic required to initialize the scope
++Contain the logic/fxns used by the view to present data from the scope
++Contain the logic/fxns that are needed to update the scope based on user interaction
++Controllers bring logic from the models and views together
+</span>
 
-
+<span>
 Controllers shouldn't:
-•฀ Contain logic/fxns that manipulate DOM elements
-•฀ Contain logic/fxns that manage persistence of data:
++Contain logic/fxns that manipulate DOM elements
++Contain logic/fxns that manage persistence of data:
   i.e. it shouldn't be handling complex
   data manipulation/business logic, generating, storing
   or significantly modifying app data, etc.
+</span>
 
+<span>
 Models:
-• Contain the logic/fxns that generate, modify, destroy
++Contain the logic/fxns that generate, modify, destroy
   or store app data.
+</span>
 
+<span>
 Views:
   Manipulate DOM elements.
-
+</span>
 The angular frame work isn't a traditional MVC (its richer/
 different because of services, filters, directives, etc)
 but, nonetheless, general MVC patterns should be applied
@@ -120,21 +125,21 @@ Creating re-useable functions in services not only
 DRYs up your code, but also
 makes the application code more readable.
 
-Additionally, I tried to organize my services by concerns:
+<span>Additionally, I tried to organize my services by concerns:
 for instance, in my app, I
 have the following factory services:
 
-CalculatorMath: handles all the math operation functions
++CalculatorMath: handles all the math operation functions
                 ÷, x, +, -, %, etc
-CalculatorSetup: Generates all the data needed to initialize
++CalculatorSetup: Generates all the data needed to initialize
                   the calculator app.
 
-CalculatorDuties: Creates and manages the app data
++CalculatorDuties: Creates and manages the app data
                   the calculator needs maintain
                   to maintain its state
 
 
-CalculatorClicks: handles persistence and management app
++CalculatorClicks: handles persistence and management app
             of data after given user action is taken in
             the calculator: is, in the case of click
             on a digit button, the controller fires
@@ -143,7 +148,7 @@ CalculatorClicks: handles persistence and management app
             the data persistence/transformation
             and then passes the resulting data back to
             to the controller.
-
+</span>
 
 ###Views/Directives
 This app doesn't have a ton of don manipulation, however,
@@ -202,12 +207,13 @@ This app uses a Sinatra backend as the server
 I could have used node, but I have a nginx server
 that is config'd for sintra so I just went with that.
 
-assumes that you have ruby, npm and bower installed
+*assumes that you have ruby, npm and bower installed*
 
 to install dependencies:
-bundle install
-bower install
+```bundle install
 
+bower install
+```
 to run the app in your web browser, cd into the root dir and run:
-rackup
+```rackup```
 
