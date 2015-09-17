@@ -65,7 +65,7 @@ keys where pressed, it applied the appropriate
 I tried to follow these MVC architecture patterns
 when design and building this app:
 
-```
+
 *** Controllers: ***
 
 + Contain the logic required to initialize the scope
@@ -99,7 +99,7 @@ different because of services, filters, directives, etc)
 but, nonetheless, general MVC patterns should be applied
 to angular when possible.
 
-```
+
 
 ##Controllers
 
