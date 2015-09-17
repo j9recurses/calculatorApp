@@ -20,7 +20,8 @@ The user can enter in a number, operator, or transformation
 function(+/-,.) into a calculator, or click the ac
 button to clear the screen.
 
-``` When the user enters a displayed, its displayed.
+```
+When the user enters a displayed, its displayed.
 For every successive number input, the result is shifted
 by base 10 to make room for the newest digit input.
 
@@ -43,7 +44,9 @@ operation: stores the operation that user entered (ie, + -, /, * )
 
 there are a decimal click and a double decimal click flags
 that help the calculator deal with situations where
-has entered decimal input.```
+has entered decimal input.
+
+```
 
 For UI input, the user can either click or type on a digit
 or operator. For click events, I used ng-click to fire
@@ -56,14 +59,13 @@ that watched for keydown events and when certain
 keys where pressed, it applied the appropriate
 
 
-
 ##Angular Implementation
 
 I tried to follow these MVC architecture patterns
 when design and building this app:
 
 ```
-######Controllers:
+###### Controllers:
 + Contain the logic required to initialize the scope
 
 + Contain the logic/fxns used by the view to present data from the scope
@@ -72,7 +74,7 @@ when design and building this app:
 
 + Controllers bring logic from the models and views together
 
-######Controllers shouldn't:
+###### Controllers shouldn't:
 + Contain logic/fxns that manipulate DOM elements
 
 + Contain logic/fxns that manage persistence of data:
@@ -80,11 +82,11 @@ when design and building this app:
   data manipulation/business logic, generating, storing
   or significantly modifying app data, etc.
 
-######Models:
+###### Models:
 + Contain the logic/fxns that generate, modify, destroy
   or store app data.
 
-######Views:
+###### Views:
  + Manipulate DOM elements.
 
 The angular frame work isn't a traditional MVC (its richer/
@@ -135,7 +137,7 @@ have the following factory services:
 + handles all the math operation functions
                 ÷, x, +, -, %, etc
 
-######CalculatorSetup:
+###### CalculatorSetup:
 + Generates all the data needed to initialize
                   the calculator app.
 
@@ -144,9 +146,8 @@ have the following factory services:
                   the calculator needs maintain
                   to maintain its state
 
-
 ###### CalculatorClicks:
-  + handles persistence and management app
++ handles persistence and management app
             of data after given user action is taken in
             the calculator: is, in the case of click
             on a digit button, the controller fires
@@ -184,7 +185,8 @@ files to be on the safe size. ```
 ###Things Are Missing From this App
 A couple of things are missing/could make this app better:
 
-``` 1. When a user clicks on types on the digit or operate
+```
+1. When a user clicks on types on the digit or operate
 button, the button should stay highlighted/active
 for a second or 2 to give the user feed back that they
 have clicked/pressed down on a particular button.
@@ -206,7 +208,8 @@ these key inputs are resolving to shift+c, shift+., shift+/
 which doesn't match the standard MacOSx spec.
 
 The above features are missing because I ran out of
-time to implement them. ```
+time to implement them.
+```
 
 
 ###Installation
