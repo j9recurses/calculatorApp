@@ -44,8 +44,8 @@ entered2: the first number the user entered
 operation: stores the operation that user entered (ie, + -, /, * )
 
 there are a decimal click and a double decimal click flags
-that help the calculator deal with situations where
-has entered decimal input.
+that help the calculator deal with situations where the user
+enters decimal input.
 
 ```
 
@@ -53,17 +53,18 @@ For UI input, the user can either click or type on a digit
 or operator. For click events, I used ng-click to fire
 off the corresponding function. For keyboard input,
 I created a directive that listened for key events.
-When a given key was pressed, the directive broadcast
+When a given key was pressed, the directive broadcasts
 the event down to the controller function, and in my controller,
-I had a '$scope.$on('keydown keypress',...' function
-that watched for keydown events and when certain
-keys where pressed, it applied the appropriate
+I had a ```$scope.$on('keydown keypress',...')``` function
+that watches for keydown events. When certain
+keys where pressed, the controller fires off the appropriate
+function.
 
 
 ##Angular Implementation
 
 I tried to follow these MVC architecture patterns
-when design and building this app:
+when designing and building this app:
 
 
 ######Controllers:
@@ -87,7 +88,7 @@ when design and building this app:
 
 ######Models:
 
-+ Contain the logic/fxns that generate, modify, destroy
++ Contain the logic/fxns that generate, modify, destroy, manipulate
   or store app data.
 
 ######Views:
@@ -100,24 +101,22 @@ but, nonetheless, general MVC patterns should be applied
 to angular when possible.
 
 
-
 ##Controllers
 
 Not following MVC patterns can lead to a bloated
 Angular controller.
 
 In this app, I tried to set up the controller so that
-the controller brings the view and model logic together;
-and drives the model drives view changes.
+the controller brings the view and model logic together.
 
 My controller handles what happens when a user clicks
-or presses on a key or operation; it handles
-what to do with the input, firing off functions
-that get data from various services, or passes off data
+or presses on a key or operation; it registers the
+the click and decides what to do with the input, firing off functions
+that get data from various services, or pass off data
 to be displayed in the view.
 
 ##Services
-Most of the meat of this application is handled
+The real work of this application is handled
 by various factory services. These services handle the
 the creation/persistence of data.
 
@@ -180,7 +179,7 @@ increases. As a result, the font-size and padding of
 the result screen to decrease in size or the digits
 won't be visible to the user.
 To handle this, I made a directive that handles
-the font and padding resize.
+the font and padding resizing.
 
 ###Overall App Structure
 I divided all my views, filters, directives, services controllers
@@ -188,13 +187,10 @@ and views into separate files. Initially, since this
 seemed like a small app, I had all my services in one file,
 my directives in a file, etc, but these files soon became
 a bit long and unruly. As a result, I dumped them into separate
-files to be on the safe size.
-
-
+files.
 
 ###Things Are Missing From this App
 A couple of things are missing/could make this app better:
-
 
 1. When a user clicks on types on the digit or operate
 button, the button should stay highlighted/active
@@ -207,20 +203,19 @@ input for percentage(%) is actual shift +5.
 To this with a plan vanilla keydown events
 you have to start looking for key combinations
 in the $scope.on function in the controller
-for these events. Looking for key combos is a big pain/
+for these events. Looking for key combinations is a big pain/
 time suck. To get around this I used the angular
 library hot keys to pick up these key combinations.
-I tried to use the hotkeys lib to grab single key events
-but it didn't seem to work for me.
+I tried to use the [ angular-hotkeys lib]](https://github.com/chieffancypants/angular-hotkeys)
+to grab single key events but it didn't quite work for me.
 I ran out time to build operator key hashes that would
-pick up single key operators, like / or. or c. So, now,
-these key inputs are resolving to shift+c, shift+., shift+/
-which doesn't match the standard MacOSx spec.
+pick up single key operators, i.e [ . / c  = ]
+keypress events.  So, now,
+these key inputs are resolving to shift+., shift+/, shift+c,
+enter which doesn't quite match the standard MacOSx spec.
 
 The above features are missing because I ran out of
 time to implement them.
-
-
 
 ###Installation
 This app uses a Sinatra backend as the server
