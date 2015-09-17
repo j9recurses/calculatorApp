@@ -242,6 +242,6 @@ to run the app in your web browser, cd into the root dir and run:
 rackup
 ````
 
-####Want to know more?  This code is heavily commented so you better understand my thoght process in making this app, so check it out!
+####Want to know more?  This code is heavily commented to help you better understand my thoght process in making this app, so check it out!
 
 
