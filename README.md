@@ -129,17 +129,18 @@ makes the application code more readable.
 for instance, in my app, I
 have the following factory services:
 
-+CalculatorMath: handles all the math operation functions
++ CalculatorMath: handles all the math operation functions
                 ÷, x, +, -, %, etc
-+CalculatorSetup: Generates all the data needed to initialize
+
++ CalculatorSetup: Generates all the data needed to initialize
                   the calculator app.
 
-+CalculatorDuties: Creates and manages the app data
++ CalculatorDuties: Creates and manages the app data
                   the calculator needs maintain
                   to maintain its state
 
 
-+CalculatorClicks: handles persistence and management app
++ CalculatorClicks: handles persistence and management app
             of data after given user action is taken in
             the calculator: is, in the case of click
             on a digit button, the controller fires
@@ -211,7 +212,8 @@ that is config'd for sintra so I just went with that.
 
 to install dependencies:
 ```bundle install
-
+```
+```
 bower install
 ```
 to run the app in your web browser, cd into the root dir and run:
