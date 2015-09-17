@@ -8,7 +8,6 @@ angular.module('calculatorApp').factory('CalculatorMath', function() {
         return a - b;
     };
     var multiply = function(a, b) {
-        console.log(a*b);
         return a * b;
     };
     var divide = function(a, b) {
