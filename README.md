@@ -66,7 +66,7 @@ I tried to follow these MVC architecture patterns
 when design and building this app:
 
 
-*** Controllers: ***
+######Controllers:
 
 + Contain the logic required to initialize the scope
 
@@ -76,7 +76,7 @@ when design and building this app:
 
 + Controllers bring logic from the models and views together
 
-*** Controllers shouldn't ***
+######Controllers shouldn't:
 
 + Contain logic/fxns that manipulate DOM elements
 
@@ -85,12 +85,12 @@ when design and building this app:
   data manipulation/business logic, generating, storing
   or significantly modifying app data, etc.
 
-*** Models: ***
+######Models:
 
 + Contain the logic/fxns that generate, modify, destroy
   or store app data.
 
-***Views:***
+######Views:
 
  + Manipulate DOM elements.
 
